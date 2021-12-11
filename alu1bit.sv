@@ -8,10 +8,22 @@ module alu1bit (
     output logic cout        // Carry out
 );
 
-// Put your code here
-// ------------------
+logic d0, d1, d2, d3;
+logic or1Out, not2Out;
+
+assign d2 = d3;
 
 
-// End of your code
+OR2  #(.Tpdhl(10), .Tpdlh(1)) gOr1 (.A(a), .B(b), .Z(or1Out));
+NOT  #(.Tpdhl(1),  .Tpdlh(2)) gNot1 (.A(or1Out), .Z(d0));
+
+XOR2 #(.Tpdhl(5),  .Tpdlh(10)) gXor (.A(a), .B(b), .Z(d1));
+
+NOT  #(.Tpdhl(1),  .Tpdlh(2)) gNot2 (.A(op[0]), .Z(not2Out));
+fas (.a(a), .b(b), .cin(cin), .a_ns(not2Out), .s(d2), .cout(cout));
+
+mux4(.d0(d0), .d1(d1), .d2(d2), .d3(d3), .sel(op), .z(s));
+
+
 
 endmodule
