@@ -6,16 +6,20 @@ module mux2 (
     output logic z           // Output
 );
 
-logic g1, g2, g3, g4, g5, g6, g7, g8;
 
-or(z, g2, g3);
-not(g2, g4);
-or(g4, sel, g6);
-not(g6, d0);
-not(g3, g5);
-or(g5, g7, g8);
-not(g7, sel);
-not(g7, sel);
+logic w2, w3, w4, w5, w6, w7, w8;
+
+
+OR2 #(.Tpdhl(10), .Tpdlh(1)) g1 (.A(w2), .B(w3), .Z(z));
+NOT #(.Tpdhl(1),  .Tpdlh(2)) g2 (.A(w4), .Z(w2));
+OR2 #(.Tpdhl(10), .Tpdlh(1)) g4 (.A(w6), .B(sel), .Z(w4));
+NOT #(.Tpdhl(1),  .Tpdlh(2)) g6 (.A(d0), .Z(w6));
+
+NOT #(.Tpdhl(1),  .Tpdlh(2)) g3 (.A(w5), .Z(w3));
+OR2 #(.Tpdhl(10), .Tpdlh(1)) g5 (.A(w7), .B(w8), .Z(w5));
+NOT #(.Tpdhl(1),  .Tpdlh(2)) g7 (.A(sel), .Z(w7));
+NOT #(.Tpdhl(1),  .Tpdlh(2)) g8 (.A(d1), .Z(w8));
+
 
 
 endmodule
