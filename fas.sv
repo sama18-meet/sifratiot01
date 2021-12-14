@@ -40,7 +40,7 @@ OR2 #(.Tpdhl(10), .Tpdlh(10)) g8 (.A(b), .B(cin), .Z(w8));
 logic w10;
 NOT #(.Tpdhl(2),  .Tpdlh(2)) g10 (.A(w9), .Z(w10));
 logic w11;
-NOT #(.Tpdhl(2),  .Tpdlh(2)) g11 (.A(w9), .Z(w11));
+NOT #(.Tpdhl(2),  .Tpdlh(2)) g11 (.A(w8), .Z(w11));
 logic w12;
 OR2 #(.Tpdhl(10), .Tpdlh(10)) g12 (.A(w10), .B(w11), .Z(w12));
 logic w13;
