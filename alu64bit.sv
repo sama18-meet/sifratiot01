@@ -10,14 +10,14 @@ module alu64bit (
 
 logic [63:0] all_couts;
 
-alu1bit(.a(a[0]), .b([b0]), .cin(cin), .op(op), .s(s[0]), .cout(all_couts[0]));
+alu1bit inst0(.a(a[0]), .b(b[0]), .cin(cin), .op(op), .s(s[0]), .cout(all_couts[0]));
 
 
 genvar i;
 generate
-	for (i=1, i<64, i++)
+	for (i=1; i<64; i++)
 	begin
-		alu1bit alu1bit_inst(.a(a[i]), .b(b[i]), .cin(all_couts[i-1]), .op(op), .s(s[i]), .cout(all_couts[i]));
+		alu1bit inst(.a(a[i]), .b(b[i]), .cin(all_couts[i-1]), .op(op), .s(s[i]), .cout(all_couts[i]));
 	end
 endgenerate
 
