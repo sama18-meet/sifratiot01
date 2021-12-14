@@ -20,9 +20,9 @@ NOT  #(.Tpdhl(1),  .Tpdlh(2)) gNot1 (.A(or1Out), .Z(d0));
 XOR2 #(.Tpdhl(5),  .Tpdlh(10)) gXor (.A(a), .B(b), .Z(d1));
 
 NOT  #(.Tpdhl(1),  .Tpdlh(2)) gNot2 (.A(op[0]), .Z(not2Out));
-fas (.a(a), .b(b), .cin(cin), .a_ns(not2Out), .s(d2), .cout(cout));
+fas fas_inst(.a(a), .b(b), .cin(cin), .a_ns(not2Out), .s(d2), .cout(cout));
 
-mux4(.d0(d0), .d1(d1), .d2(d2), .d3(d3), .sel(op), .z(s));
+mux4 mux4_inst(.d0(d0), .d1(d1), .d2(d2), .d3(d3), .sel(op), .z(s));
 
 
 
